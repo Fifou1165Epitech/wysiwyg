@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur WYSIWYG</title>
+    <script type="module" src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Éditeur de texte WYSIWYG</h1>
+    <div class="wysiwyg-toolbar">
+        <button id="bold">Gras</button>
+        <button id="italic">Italique</button>
+        <button id="strikethrough">Barré</button>
+        <input type="color" id="colorPicker">
+        <select id="fontSize">
+            <option value="12px">12px</option>
+            <option value="16px">16px</option>
+            <option value="20px">20px</option>
+            <option value="24px">24px</option>
+        </select>
+        <button id="link">Lien</button>
+    </div>
+    <div contenteditable="true" id="textarea" style="border:1px solid #ccc; padding:10px; min-height:200px;"></div>
+</body>
+</html>
