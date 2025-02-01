@@ -11,6 +11,7 @@ textArea.addEventListener("keydown", (e) => {
         return;
     }else if(e.key == "Enter"){
         e.preventDefault();
+
         let div = document.createElement('div');
         let t = mw.createToolbar(div);
 
@@ -72,3 +73,33 @@ textArea.addEventListener("keydown", (e) => {
     }
     
 })
+//Fonction sauvagarde avec localStorage
+function save() {
+    localStorage.setItem("pageContent", document.getElementById("textarea").innerHTML);
+}
+
+document.getElementById("saveButton").addEventListener("click", save);
+
+setInterval(save, 1 * 60 * 1000);
+
+//Charge le contenue sauvegarder
+document.addEventListener("DOMContentLoaded", () => {
+    let savedContent = localStorage.getItem("pageContent");
+    if (savedContent) {
+        document.getElementById("textarea").innerHTML = savedContent;
+    }
+});
+
+//Pour supprimer une ligne
+textArea.addEventListener("keydown", (e) => {
+    let lastPara;
+    let lastDiv = textArea.lastElementChild;
+    if (lastDiv) {
+        lastPara = lastDiv.querySelector("p");
+    } else {
+        lastPara = null;
+    }    
+    if (e.key === "Backspace" && lastPara && lastPara.innerText.trim() === "") {
+        lastDiv.remove();
+        return; 
+    }});
