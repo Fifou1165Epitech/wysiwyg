@@ -6,7 +6,6 @@ class MyWysiwyg {
         this.buttons = buttons;
     }
 
-
     createToolbar(div) {
         let toolbarElement = document.createElement("div");
         toolbarElement.innerHTML = `<div style="background-color: blue; width: max-content;"></div>`;
@@ -15,16 +14,15 @@ class MyWysiwyg {
         this.buttons.forEach(button => {
             if (button == 'Color') {
                 innerBar.innerHTML += `<input type="color" list class="${button}">`;
-                console.log("I am an input type color");
             } else if (button == 'FontSize') {
                 innerBar.innerHTML += `<input type="number" min="2" step="2" value ="14" class="${button}">`;
-                console.log("I am an input type number");
             } else {
                 innerBar.innerHTML += `<button class="${button}">${button}</button>`;
                 console.log(button);
             }
         })
-        
+        toolbarElement.style.display = "none";
+        toolbarElement.classList.add("toolbar");
         div.appendChild(toolbarElement);
         return(toolbarElement)
     }

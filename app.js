@@ -14,7 +14,7 @@ textArea.addEventListener("keydown", (e) => {
         e.preventDefault();
         let div = document.createElement('div');
         let t = mw.createToolbar(div);
-
+        
         div.style.display = "flex";
         div.style.alignItems = "center";
         div.id = `${i}`;
@@ -33,6 +33,14 @@ textArea.addEventListener("keydown", (e) => {
         textArea.appendChild(div);
         p.focus();
 
+        p.addEventListener("click", () => {
+            let lesToolsbar = document.querySelectorAll(".toolbar");
+            lesToolsbar.forEach(toolbar => {
+                toolbar.style.display = "none";
+            });
+            t.style.display = "block";
+        });
+        
 
         let boldIndex = 0;
         gras.addEventListener("click", () => {
@@ -96,7 +104,14 @@ textArea.addEventListener("keydown", (e) => {
             p.style.fontSize = `${fontSize.value}px`;
         });
         
-
+        //Pour supprimer une ligne
+        textArea.addEventListener("keydown", (e) => {
+            
+            if (e.key === "Backspace" && p.innerText.trim() === "") {
+                t.remove();
+                p.remove();
+                return; 
+            }});
 
     }
     
@@ -105,33 +120,3 @@ textArea.addEventListener("keydown", (e) => {
 
 
 
-//Fonction sauvagarde avec localStorage
-function save() {
-    localStorage.setItem("pageContent", document.getElementById("textarea").innerHTML);
-}
-
-document.getElementById("saveButton").addEventListener("click", save);
-
-setInterval(save, 1 * 60 * 1000);
-
-//Charge le contenue sauvegarder
-document.addEventListener("DOMContentLoaded", () => {
-    let savedContent = localStorage.getItem("pageContent");
-    if (savedContent) {
-        document.getElementById("textarea").innerHTML = savedContent;
-    }
-});
-
-//Pour supprimer une ligne
-textArea.addEventListener("keydown", (e) => {
-    let lastPara;
-    let lastDiv = textArea.lastElementChild;
-    if (lastDiv) {
-        lastPara = lastDiv.querySelector("p");
-    } else {
-        lastPara = null;
-    }
-    if (e.key === "Backspace" && lastPara && lastPara.innerText.trim() === "") {
-        lastDiv.remove();
-        return; 
-    }});
