@@ -15,6 +15,7 @@ textArea.addEventListener("keydown", (e) => {
         let div = document.createElement('div');
         let t = mw.createToolbar(div);
         
+        
         div.style.display = "flex";
         div.style.alignItems = "center";
         div.id = `${i}`;
@@ -38,6 +39,7 @@ textArea.addEventListener("keydown", (e) => {
             lesToolsbar.forEach(toolbar => {
                 toolbar.style.display = "none";
             });
+            p.classList.add("active");
             t.style.display = "block";
         });
         
@@ -106,17 +108,15 @@ textArea.addEventListener("keydown", (e) => {
         
         //Pour supprimer une ligne
         textArea.addEventListener("keydown", (e) => {
-            
-            if (e.key === "Backspace" && p.innerText.trim() === "") {
+            if (e.key === "Backspace" && p.innerText.trim() === "" && (p.classList.contains("active") == true)) {
                 t.remove();
                 p.remove();
+                console.log(p)
                 return; 
             }});
 
-    }
+        }
     
 })
-
-
 
 
