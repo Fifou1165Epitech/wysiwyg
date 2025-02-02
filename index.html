@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WYSIWYG</title>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <main style="display: flex; justify-content: center">
-        <div style="background-color: red; height: 70vh; width: 80vw;" id="textarea">
-            <h1>test</h1>
+    <main>
+        <h2>WYSIWYG</h2>
+        <div id="textarea">
             <div>
-                <p contenteditable="true" style="background-color: green;"></p>
+                <p contenteditable="true"></p>
             </div>
         </div>
+        <button id="saveButton">Sauvegarder</button>
     </main>
     <script type="module" src="./app.js"></script>
 </body>

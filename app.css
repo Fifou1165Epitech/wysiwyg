@@ -1,4 +1,100 @@
-body{
-    padding: 0;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    background: #5e95e6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 200px;
+    background: #0ebeff;
+    border-radius: 4px;
+}
+
+#textarea p {
+    background-color: white;
+    margin: 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Base button styles */
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Icon button styles */
+.Gras, .Italic, .TextCrossed, .Lien {
+    width: 30px;
+    height: 30px;
+    font-size: 0;  /* Hide text for icon buttons */
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
+
+/* Regular text button styles */
+.Color, .FontSize {
+    width: auto;
+    height: auto;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.toolbar {
+    background-color: #007BFF;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    gap: 5px;
+}
+
+/* Icon styles */
+.Gras {
+    background-image: url("./assets/bold-button.png");
+}
+
+.Italic {
+    background-image: url("./assets/italic-button.png");
+}
+
+.TextCrossed {
+    background-image: url("./assets/line-through.png");
+}
+
+.Lien{
+    background-image: url("./assets/link.png");
+}
+
+/* Save button specific style */
+#saveButton {
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 20px;
 }
