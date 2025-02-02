@@ -6,6 +6,7 @@ let mw = new MyWysiwyg(document.getElementById("textarea"),{
     buttons : ["Gras", "Italic", "TextCrossed", "Choix de la couleur", "Taille de la police", "Lien"]
 });
 let i = 0;
+
 textArea.addEventListener("keydown", (e) => {
     if(e.key == "Enter" && e.shiftKey){
         return;
@@ -21,7 +22,6 @@ textArea.addEventListener("keydown", (e) => {
         let gras = t.querySelector(".Gras");
         let italic = t.querySelector(".Italic");
         let textCrossed = t.querySelector(".TextCrossed");
-
 
 
         let p = document.createElement('p');
@@ -68,9 +68,35 @@ textArea.addEventListener("keydown", (e) => {
             }
         })
 
+        let link = t.querySelector(".Lien");
+        link.addEventListener("click", () => {
+            let url = prompt("Entrez le lien : ");
+            if (url) {
+            p.innerHTML = `<a href="${url}" target="_blank">${p.innerHTML}</a>`;
+            }
+        });
+    
+
+        // Ajout du changement de couleur du texte
+        let color = t.querySelector(".Color");
+        color.addEventListener("change", () => {
+            p.style.color = color.value;
+        });
+
+        
+        // Ajout du changement de la taille de la police
+        let fontSize = t.querySelector(".FontSize");
+        fontSize.addEventListener("input", () => {
+            p.style.fontSize = `${fontSize.value}px`;
+        });
+
+        
+
     }
     
 })
+
+
 
 //Fonction sauvagarde avec localStorage
 function save() {
