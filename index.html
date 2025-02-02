@@ -5,43 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My wysiwyg</title>
     <link rel="stylesheet" href="./style.css">
-
-<!--------------------------- MODULES JS------------------------------------->
-
     <script type="module" src="modules/my_wysiwyg.js"></script>
-    <!-- <script type="module" src="modules/script.js"></script> -->
-    <script type="module"> 
+    <script type="module" src="modules/script.js"></script>
+    <!-- <script type="module"> 
         import { MyWysiwyg } from "./modules/my_wysiwyg.js";
         document.addEventListener("DOMContentLoaded",() => {
             let mw = new MyWysiwyg(document.getElementById('textarea'), {
-                buttons: ["bold", "color", "link"]
+                buttons: ["link", "bold"]
             }); 
         });
-    </script>
-    
-<!---------------------------------------------------------------------------->
-
+    </script> -->
 </head>
 <body>
-    <!-- <h1>My wysiwyg</h1>
+    <h1>My wysiwyg</h1>
     <div id="editor" class="container">
         <ul id="buttons">
             <li><button id="bold" style="font-weight: bold;">B</button></li>
             <li><button id="italic" style="font-style: italic;">i</button></li>
-            <li><button id="underline" style="text-decoration: underline;">U</button></li>
+            <li><button id="underLine" style="text-decoration: underline;">U</button></li>
             <li><button id="lineThrough" style="text-decoration: line-through;"> U </button></li>
+            <li><button id="alignLeft"> L </button></li>
+            <li><button id="alignCenter"> C </button></li>
+            <li><button id="alignRight"> R </button></li>
+            <li><button id="justify"> = </button></li>
             <li><input id="fontSize" type="number" min="2" value="14" step="2"></li>
             <li>
-                <input id="color" type="color" list="color-list">
-                <datalist id="color-list">
-                    <option value="red">
-                </datalist>
+                <input id="color" type="color" list>
+                <!-- <datalist id="color-list"> -->
+                    <!-- <option value="red"></option> -->
+                    <!-- <option value="blue">
+                    <option value="green"> -->
+                <!-- </datalist> -->
             </li>
             <li><button id="link">&#x1f517;</button></li>
         </ul>
         <div id="textarea" contenteditable="true" data-text="Write your text here...">
-            
+            <p>la</p>
         </div>
-    </div> -->
+    </div>
 </body>
 </html>
