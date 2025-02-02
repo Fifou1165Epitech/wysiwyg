@@ -3,7 +3,7 @@ import { MyWysiwyg } from "./modules/my_wysiwyg.js";
 let textArea = document.getElementById("textarea");
 
 let mw = new MyWysiwyg(document.getElementById("textarea"),{
-    buttons : ["Gras", "Italic", "TextCrossed", "Choix de la couleur", "Taille de la police", "Lien"]
+    buttons : ["Gras", "Italic", "TextCrossed", "Color", "FontSize", "Lien"]
 });
 let i = 0;
 
