@@ -3,13 +3,14 @@ import { MyWysiwyg } from "./modules/my_wysiwyg.js";
 let textArea = document.getElementById("textarea");
 
 let mw = new MyWysiwyg(document.getElementById("textarea"),{
-    buttons : ["Gras", "Italic", "TextCrossed", "Choix de la couleur", "Taille de la police", "Lien"]
+    buttons : ["Gras", "Italic", "TextCrossed", "Color", "FontSize", "Lien"]
 });
 let i = 0;
 textArea.addEventListener("keydown", (e) => {
     if(e.key == "Enter" && e.shiftKey){
         return;
-    }else if(e.key == "Enter"){
+    }
+    else if(e.key == "Enter"){
         e.preventDefault();
         let div = document.createElement('div');
         let t = mw.createToolbar(div);
@@ -27,7 +28,7 @@ textArea.addEventListener("keydown", (e) => {
         let p = document.createElement('p');
         p.style.width = "100%";
         p.contentEditable = 'true';
-        p.style.backgroundColor = 'green';
+
         div.appendChild(p);
         textArea.appendChild(div);
         p.focus();
@@ -68,8 +69,69 @@ textArea.addEventListener("keydown", (e) => {
                 textCrossedIndex--;
             }
         })
+        
+
+       
+
+        // Ajout du lien cliquable
+        let link = t.querySelector(".Lien");
+        link.addEventListener("click", () => {
+            let url = prompt("Entrez le lien : ");
+            if (url) {
+            p.innerHTML = `<a href="${url}" target="_blank">${p.innerHTML}</a>`;
+            }
+        });
+    
+
+        // Ajout du changement de couleur du texte
+        let color = t.querySelector(".Color");
+        color.addEventListener("change", () => {
+            p.style.color = color.value;
+        });
+
+        
+        // Ajout du changement de la taille de la police
+        let fontSize = t.querySelector(".FontSize");
+        fontSize.addEventListener("input", () => {
+            p.style.fontSize = `${fontSize.value}px`;
+        });
+        
+
 
     }
     
 })
 
+
+
+
+//Fonction sauvagarde avec localStorage
+function save() {
+    localStorage.setItem("pageContent", document.getElementById("textarea").innerHTML);
+}
+
+document.getElementById("saveButton").addEventListener("click", save);
+
+setInterval(save, 1 * 60 * 1000);
+
+//Charge le contenue sauvegarder
+document.addEventListener("DOMContentLoaded", () => {
+    let savedContent = localStorage.getItem("pageContent");
+    if (savedContent) {
+        document.getElementById("textarea").innerHTML = savedContent;
+    }
+});
+
+//Pour supprimer une ligne
+textArea.addEventListener("keydown", (e) => {
+    let lastPara;
+    let lastDiv = textArea.lastElementChild;
+    if (lastDiv) {
+        lastPara = lastDiv.querySelector("p");
+    } else {
+        lastPara = null;
+    }
+    if (e.key === "Backspace" && lastPara && lastPara.innerText.trim() === "") {
+        lastDiv.remove();
+        return; 
+    }});
